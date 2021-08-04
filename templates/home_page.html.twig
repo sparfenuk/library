@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Authors ({{ pagination.getTotalItemCount }})</h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
+                    <th>Place of birth</th>
+                    <th>Books</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for author in pagination %}
+                    <tr>
+                        <td>
+                            {{ author.firstName }}
+                        </td>
+                        <td>
+                            {{ author.lastName }}
+                        </td>
+                        <td>
+                            {{ author.birthday|date("m/d/Y") }}
+                        </td>
+                        <td>
+                            {{ author.placeOfBirth }}
+                        </td>
+                        <td>
+                            {{ include('book/list.html.twig', {'books': author.books, 'author_id': author.id}) }}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            No authors found
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

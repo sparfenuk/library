@@ -1,3 +1,74 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\HomeController::index
+
+books:
+    path: /books/{author_id}
+    controller: App\Controller\HomeController::books
+
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+authentication_token:
+    path: /authentication_token
+    methods: ['POST']
+
+
+api_get_book:
+    path: /api/v1/book/{id}
+    controller:  App\Controller\Api\v1\BookController::getBook
+    methods: ['GET']
+
+api_get_books:
+    path: /api/v1/books
+    controller:  App\Controller\Api\v1\BookController::getBooks
+    methods: ['GET']
+
+api_post_book:
+    path: /api/v1/book
+    controller: App\Controller\Api\v1\BookController::postBook
+    methods: ['POST']
+
+api_put_book:
+    path: /api/v1/book/{id}
+    controller: App\Controller\Api\v1\BookController::putBook
+    methods: [ 'PUT' ]
+
+api_delete_book:
+    path: /api/v1/book/{id}
+    controller: App\Controller\Api\v1\BookController::deleteBook
+    methods: ['DELETE']
+
+
+api_get_author:
+    path: /api/v1/author/{id}
+    controller:  App\Controller\Api\v1\AuthorController::getAuthor
+    methods: ['GET']
+
+api_get_authors:
+    path: /api/v1/authors
+    controller:  App\Controller\Api\v1\AuthorController::getAuthors
+    methods: ['GET']
+
+api_post_author:
+    path: /api/v1/author
+    controller: App\Controller\Api\v1\AuthorController::postAuthor
+    methods: ['POST']
+
+api_put_author:
+    path: /api/v1/author/{id}
+    controller: App\Controller\Api\v1\AuthorController::putAuthor
+    methods: [ 'PUT' ]
+
+api_delete_author:
+    path: /api/v1/author/{id}
+    controller: App\Controller\Api\v1\AuthorController::deleteAuthor
+    methods: ['DELETE']
+
+

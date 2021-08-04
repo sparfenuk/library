@@ -1,0 +1,43 @@
+{% set books = knp_paginator.paginate(books, app.request.query.get('page', 1), 10) %}
+{{ books.setUsedRoute('books') }}
+{{ books.setParam('author_id', author_id) }}
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Books ({{ books.getTotalItemCount }})</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Language</th>
+                <th>Creation date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>
+                        {{ book.title }}
+                    </td>
+                    <td>
+                        {{ book.description|raw }}
+                    </td>
+                    <td>
+                        {{ book.language }}
+                    </td>
+                    <td>
+                        {{ book.createdAt|ago }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center">
+                        No books found
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(books) }}
+    </div>
+</div>
