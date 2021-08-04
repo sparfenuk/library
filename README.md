@@ -2,8 +2,9 @@
 ```
 composer install 
 ```
-
+```
 Внести дані доступу локальної MySQL в .env файл
+```
 ```
 php bin/console doctrine:database:create // Створює БД
 ```
